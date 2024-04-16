@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A84B5622-F3C8-41BD-87F1-756FB61CFF21}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CADShark.OpenCAD.Addin</RootNamespace>
+    <AssemblyName>CADShark.OpenCAD.Addin</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>StrongKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="SolidWorks.Interop.sldworks, Version=31.5.0.52, Culture=neutral, PublicKeyToken=7c4797c3e4eeac03, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\References\2023\SolidWorks.Interop.sldworks.dll</HintPath>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.sw3dprinter">
+      <HintPath>..\References\2023\SolidWorks.Interop.sw3dprinter.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swcommands">
+      <HintPath>..\References\2023\SolidWorks.Interop.swcommands.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swconst, Version=31.5.0.52, Culture=neutral, PublicKeyToken=19f43e188e4269d8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\References\2023\SolidWorks.Interop.swconst.dll</HintPath>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swdimxpert">
+      <HintPath>..\References\2023\SolidWorks.Interop.swdimxpert.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swdocumentmgr">
+      <HintPath>..\References\2023\SolidWorks.Interop.swdocumentmgr.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swmotionstudy">
+      <HintPath>..\References\2023\SolidWorks.Interop.swmotionstudy.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swpublished, Version=31.5.0.52, Culture=neutral, PublicKeyToken=89a97bdc5284e6d8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\References\2023\SolidWorks.Interop.swpublished.dll</HintPath>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.SWRoutingLib">
+      <HintPath>..\References\2023\SolidWorks.Interop.SWRoutingLib.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="solidworkstools, Version=2.0.0.0, Culture=neutral, PublicKeyToken=bd18593873b4686d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\2023\solidworkstools.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config\ConfigurationFile.cs" />
+    <Compile Include="Config\ConfigurationData.cs" />
+    <Compile Include="Core.cs" />
+    <Compile Include="Windows\EnumExtensions.cs" />
+    <Compile Include="SettingsWindow\STEPUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsWindow\STEPUserControl.Designer.cs">
+      <DependentUpon>STEPUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SettingType.cs" />
+    <Compile Include="SettingsWindow\DXFUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsWindow\DXFUserControl.Designer.cs">
+      <DependentUpon>DXFUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\FeedbackWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\FeedbackWindow.Designer.cs">
+      <DependentUpon>FeedbackWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SendMail.cs" />
+    <Compile Include="HandlingProgressBar.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="OpenCADPlugin.cs" />
+    <Compile Include="ToolbarMenu.cs" />
+    <Compile Include="ToolsMenu.cs" />
+    <Compile Include="SettingsWindow\PDFUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsWindow\PDFUserControl.Designer.cs">
+      <DependentUpon>PDFUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsWindow\PDMUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsWindow\PDMUserControl.Designer.cs">
+      <DependentUpon>PDMUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsWindow\SettingsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsWindow\SettingsWindow.Designer.cs">
+      <DependentUpon>SettingsWindow.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CADShark.Common.Analytics\CADShark.Common.Analytics.csproj">
+      <Project>{dec27a2c-7074-4e7b-8c08-bac91f82ec0e}</Project>
+      <Name>CADShark.Common.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CADShark.Common.Logging\CADShark.Common.Logging.csproj">
+      <Project>{d02c8bce-c05a-4648-aaf7-8dd96fcae198}</Project>
+      <Name>CADShark.Common.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CADShark.Common.MultiConverter\CADShark.Common.MultiConverter.csproj">
+      <Project>{98745c50-f699-4260-808c-71371d452f98}</Project>
+      <Name>CADShark.Common.MultiConverter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CADShark.Common.SolidworksPDM\CADShark.Common.SolidworksPDM.csproj">
+      <Project>{51983437-1027-4033-B208-9A41F2A0E8FF}</Project>
+      <Name>CADShark.Common.SolidworksPDM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CADShark.Common.Solidworks\CADShark.Common.Solidworks.csproj">
+      <Project>{EC7F933E-5000-43BA-ACFE-7260E0EF7226}</Project>
+      <Name>CADShark.Common.Solidworks</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StrongKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SettingsWindow\STEPUserControl.resx">
+      <DependentUpon>STEPUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsWindow\DXFUserControl.resx">
+      <DependentUpon>DXFUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\FeedbackWindow.resx">
+      <DependentUpon>FeedbackWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsWindow\PDFUserControl.resx">
+      <DependentUpon>PDFUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsWindow\PDMUserControl.resx">
+      <DependentUpon>PDMUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsWindow\SettingsWindow.resx">
+      <DependentUpon>SettingsWindow.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
